@@ -1,0 +1,715 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://Circle.png" type="Texture" id=2]
+[ext_resource path="res://Bullet.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 33.4983
+
+[sub_resource type="CircleShape2D" id=3]
+
+custom_solver_bias = 0.0
+radius = 6.26163
+
+[node name="Node2D" type="Node2D" index="0"]
+
+[node name="UI" type="Control" parent="." index="0"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Panel" type="Panel" parent="UI" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 181.0
+margin_bottom = 603.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Button" type="Button" parent="UI/Panel" index="0"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 34.0
+margin_top = 382.0
+margin_right = 161.0
+margin_bottom = 447.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Run"
+flat = false
+align = 1
+
+[node name="walkSpeed" type="HSlider" parent="UI/Panel" index="1"]
+
+pause_mode = 2
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 5.0
+margin_top = 20.0
+margin_right = 115.0
+margin_bottom = 36.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+min_value = -120.0
+max_value = 120.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+editable = true
+tick_count = 0
+ticks_on_borders = false
+focus_mode = 2
+_sections_unfolded = [ "Rect" ]
+
+[node name="VSeparator" type="VSeparator" parent="UI/Panel/walkSpeed" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 51.0
+margin_top = 10.0
+margin_right = 58.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect" ]
+
+[node name="Label2" type="Label" parent="UI/Panel/walkSpeed" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 12.0
+margin_top = -16.0
+margin_right = 96.0
+margin_bottom = -2.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Walk Speed"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Hint", "Mouse", "Rect", "Size Flags", "Theme" ]
+
+[node name="Label9" type="Label" parent="UI/Panel/walkSpeed" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 3.0
+margin_top = 13.0
+margin_right = 16.0
+margin_bottom = 27.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "B"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Focus", "Hint", "Mouse", "Rect" ]
+
+[node name="Label8" type="Label" parent="UI/Panel/walkSpeed" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 102.0
+margin_top = 13.0
+margin_right = 115.0
+margin_bottom = 27.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "F"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="rotateSpeed" type="HSlider" parent="UI/Panel" index="2"]
+
+pause_mode = 2
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 5.0
+margin_top = 70.0
+margin_right = 115.0
+margin_bottom = 86.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+min_value = -1.0
+max_value = 1.0
+step = 0.1
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+editable = true
+tick_count = 0
+ticks_on_borders = false
+focus_mode = 2
+_sections_unfolded = [ "Hint", "Rect" ]
+
+[node name="Label2" type="Label" parent="UI/Panel/rotateSpeed" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 12.0
+margin_top = -16.0
+margin_right = 96.0
+margin_bottom = -2.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Rotate Speed"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Focus", "Hint", "Margin", "Mouse", "Rect" ]
+
+[node name="VSeparator2" type="VSeparator" parent="UI/Panel/rotateSpeed" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 51.0
+margin_top = 10.0
+margin_right = 58.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect" ]
+
+[node name="Label7" type="Label" parent="UI/Panel/rotateSpeed" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 4.0
+margin_top = 15.0
+margin_right = 12.0
+margin_bottom = 29.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "L"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Focus", "Hint", "Mouse", "Rect" ]
+
+[node name="Label6" type="Label" parent="UI/Panel/rotateSpeed" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 103.0
+margin_top = 15.0
+margin_right = 111.0
+margin_bottom = 29.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "R"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="armLeft" type="HSlider" parent="UI/Panel" index="3"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 5.0
+margin_top = 120.0
+margin_right = 115.0
+margin_bottom = 136.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+min_value = -1.0
+max_value = 1.0
+step = 0.1
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+editable = true
+tick_count = 0
+ticks_on_borders = false
+focus_mode = 2
+_sections_unfolded = [ "Focus", "Mouse", "Rect", "Size Flags", "Theme" ]
+
+[node name="VSeparator3" type="VSeparator" parent="UI/Panel/armLeft" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 51.0
+margin_top = 10.0
+margin_right = 58.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect" ]
+
+[node name="Label3" type="Label" parent="UI/Panel/armLeft" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 12.0
+margin_top = -16.0
+margin_right = 96.0
+margin_bottom = -2.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Left Arm"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Fire" type="CheckButton" parent="UI/Panel/armLeft" index="2"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 108.0
+margin_top = -11.0
+margin_right = 184.0
+margin_bottom = 29.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = true
+enabled_focus_mode = 0
+shortcut = null
+group = null
+flat = false
+align = 0
+
+[node name="Label" type="Label" parent="UI/Panel/armLeft/Fire" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 22.0
+margin_top = -6.0
+margin_right = 50.0
+margin_bottom = 8.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Fire"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label4" type="Label" parent="UI/Panel/armLeft" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 4.0
+margin_top = 16.0
+margin_right = 12.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "L"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Focus", "Hint", "Mouse", "Rect" ]
+
+[node name="Label5" type="Label" parent="UI/Panel/armLeft" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 103.0
+margin_top = 16.0
+margin_right = 111.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "R"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="armRight" type="HSlider" parent="UI/Panel" index="4"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 5.0
+margin_top = 170.0
+margin_right = 115.0
+margin_bottom = 186.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+min_value = -1.0
+max_value = 1.0
+step = 0.1
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+editable = true
+tick_count = 0
+ticks_on_borders = false
+focus_mode = 2
+_sections_unfolded = [ "Focus", "Rect" ]
+
+[node name="Label4" type="Label" parent="UI/Panel/armRight" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 12.0
+margin_top = -16.0
+margin_right = 96.0
+margin_bottom = -2.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Right Arm"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Fire" type="CheckButton" parent="UI/Panel/armRight" index="1"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 106.0
+margin_top = -11.0
+margin_right = 182.0
+margin_bottom = 29.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = true
+enabled_focus_mode = 0
+shortcut = null
+group = null
+flat = false
+align = 0
+
+[node name="Label" type="Label" parent="UI/Panel/armRight/Fire" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 22.0
+margin_top = -6.0
+margin_right = 50.0
+margin_bottom = 8.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Fire"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="VSeparator4" type="VSeparator" parent="UI/Panel/armRight" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 51.0
+margin_top = 10.0
+margin_right = 58.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect" ]
+
+[node name="Label" type="Label" parent="UI/Panel/armRight" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 3.0
+margin_top = 15.0
+margin_right = 11.0
+margin_bottom = 29.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "L"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Focus", "Hint", "Mouse", "Rect" ]
+
+[node name="Label2" type="Label" parent="UI/Panel/armRight" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 102.0
+margin_top = 15.0
+margin_right = 110.0
+margin_bottom = 29.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "R"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Player" type="KinematicBody2D" parent="." index="1"]
+
+position = Vector2( 659.027, 487.059 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+armMinLimit = -0.5
+armMaxLimit = 1.75
+
+[node name="Sprite2" type="Sprite" parent="Player" index="0"]
+
+position = Vector2( 0, -32 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Offset", "Transform" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ArmRightPivot" type="Node2D" parent="Player" index="1"]
+
+position = Vector2( 29.9704, -10.7003 )
+rotation = 0.261799
+_sections_unfolded = [ "Transform" ]
+
+[node name="Arm" type="Sprite" parent="Player/ArmRightPivot" index="0"]
+
+modulate = Color( 0.71874, 0.520721, 0.882813, 1 )
+position = Vector2( -1.28473, -14.9053 )
+scale = Vector2( 0.15, 0.4 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Offset", "Transform", "Visibility" ]
+
+[node name="ArmLeftPivot" type="Node2D" parent="Player" index="2"]
+
+position = Vector2( -26.6719, -14.4961 )
+rotation = -0.261799
+_sections_unfolded = [ "Transform" ]
+
+[node name="Arm" type="Sprite" parent="Player/ArmLeftPivot" index="0"]
+
+modulate = Color( 0.71874, 0.520721, 0.882813, 1 )
+position = Vector2( 0.549255, -13.2886 )
+scale = Vector2( 0.15, 0.4 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Offset", "Transform", "Visibility" ]
+
+[node name="Sprite" type="Sprite" parent="Player" index="3"]
+
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Offset", "Transform" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" index="4"]
+
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Bullet" type="StaticBody2D" parent="Player" index="5"]
+
+editor/display_folded = true
+z_index = -100
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+script = ExtResource( 3 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Player/Bullet" index="0"]
+
+modulate = Color( 1, 0.773438, 0, 1 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Bullet" index="1"]
+
+shape = SubResource( 3 )
+disabled = true
+
+[node name="RunTimer" type="Timer" parent="Player" index="6"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[connection signal="pressed" from="UI/Panel/Button" to="Player" method="_on_Button_pressed"]
+
+[connection signal="toggled" from="UI/Panel/armLeft/Fire" to="Player" method="_on_Fire_Left_toggled"]
+
+[connection signal="toggled" from="UI/Panel/armRight/Fire" to="Player" method="__on_Fire_Right_toggled"]
+
+[connection signal="timeout" from="Player/RunTimer" to="Player" method="_on_RunTimer_timeout"]
+
+
